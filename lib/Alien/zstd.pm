@@ -90,6 +90,10 @@ for the use of other modules.
 
 =over 4
 
+=item L<zstd|https://facebook.github.io/zstd/>
+
+The zstd home page.
+
 =item L<Alien>
 
 Documentation on the Alien concept itself.
