@@ -79,6 +79,10 @@ for the use of other modules.
 
 # SEE ALSO
 
+- [zstd](https://facebook.github.io/zstd/)
+
+    The zstd home page.
+
 - [Alien](https://metacpan.org/pod/Alien)
 
     Documentation on the Alien concept itself.
