@@ -3,7 +3,7 @@ use alienfile;
 plugin PkgConfig => 'libzstd';
 
 share {
-  start_url 'https://github.com/facebook/zstd/releases/download/v1.5.2';
+  start_url 'https://github.com/facebook/zstd/releases';
   plugin Download => (
     filter  => qr/^zstd.*tar\.gz$/,
     version => qr/([0-9\.]+)/,
@@ -11,9 +11,20 @@ share {
   plugin Extract => 'tar.gz';
   plugin 'Build::CMake';
   build [
-    ['%{cmake}', @{ meta->prop->{plugin_build_cmake}->{args} }, '%{.install.extract}'],
-    '%{make}',
-    '%{make} install',
+    ['%{cmake}',
+      @{ meta->prop->{plugin_build_cmake}->{args} },
+
+      qw(-DZSTD_BUILD_PROGRAMS=ON), # tool
+      qw(-DZSTD_BUILD_STATIC=ON),   # xs
+      qw(-DZSTD_BUILD_SHARED=ON),   # ffi
+
+      qw(-DZSTD_BUILD_TESTS=OFF),
+
+      qw(-S), '%{.install.extract}/build/cmake',
+      qw(-B build),
+    ],
+    [ '%{make}', qw( -C build ) ],
+    [ '%{make}', qw( -C build ), 'install' ],
   ];
   plugin 'Gather::IsolateDynamic';
 }
