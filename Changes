@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Switch to using Download::GitHub plugin.
+    See <https://github.com/PerlAlien/Alien-zstd/pull/3>.
 
 0.01      2022-05-11 14:26:12-04:00 America/New_York
   - initial version
