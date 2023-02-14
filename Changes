@@ -2,6 +2,7 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
   - Fix missing $VERSION.
+  - Update output to match new release. Fixes RT#146465.
 
 0.03      2022-11-01 20:38:04-04:00 America/New_York
   - Ensure that zstd program exists.
